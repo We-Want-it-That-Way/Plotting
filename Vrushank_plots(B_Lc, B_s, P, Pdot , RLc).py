@@ -49,17 +49,12 @@ c
 
 # Main code(high pulsar + Non Radio + Magnetors)
 
-# In[4]:
-
-
 o=pd.concat([l,p,c],ignore_index=True)
 o.to_csv('Combined_data.csv')
 o
 
 
 # ## $B_{Lc} = B_{s}(\frac{\omega R}{c})^{3} = 9.2 \times (\frac{P}{s})^{\frac{-5}{2}}(\frac{\dot{P}}{10^{-15}})^{\frac{-1}{2}}Gauss$
-
-# In[5]:
 
 
 a=o['B_Lc']
@@ -101,8 +96,6 @@ axs[1, 1].set_title("$log(B_{Lc}^{2})$")
 #since the relation between B_Lc can be given to B_s and it is connected to p & pdot
 
 
-# In[6]:
-
 
 import matplotlib 
 matplotlib.rc('xtick', labelsize=12) 
@@ -120,18 +113,12 @@ plt.plot(np.sort(np.log(a)),np.sort(np.log(d)))
 
 # ### checking the relation : $\sin{\beta} = \sqrt{\frac{P\dot{P}}{2}}$
 
-# In[7]:
-
-
 from math import *
 sinb = (np.sqrt((c*b)/2))
 print(sinb)
 
 
 # ### inverse relation check:
-
-# In[8]:
-
 
 def PPdot(a):
     a=int(input("Enter angle: "))
@@ -141,16 +128,11 @@ def PPdot(a):
 PPdot(a)
 
 
-# In[9]:
-
 
 print(np.sqrt((o['po']*o['pdot'])/2))
 
 
 # ## Tryng for R
-
-# In[10]:
-
 
 R = (((o['Edot'])**(1/6))/((o['B_s'])**(1/3))*((o['po'])**(2/3)))
 R
@@ -158,22 +140,12 @@ R
 
 # ### From I , B, P and Pdot
 
-# In[17]:
-
-
 R2 = ((l['I']*o['pdot']*o['po'])/(o['B_s']**2))**(1/6)
 R2
 
 
-# In[12]:
-
-
 pop=(o['po']*o['pdot'])
 pop
-
-
-# In[13]:
-
 
 import pandas as pd
 import numpy as np
@@ -189,34 +161,26 @@ l.to_csv('High_energy_pulsar.csv')
 l
 
 
-# In[15]:
-
 
 pop2 = ((o['B_s']**2)*(R**6))/(I)
 pop2
-
-
-# In[32]:
 
 
 M = (I/(R2**2))
 M
 
 
-# In[14]:
 
 
 I = ((o['B_s']**(2))*(R**6))/(o['po']*o['pdot'])
 I
 
 
-# In[19]:
 
 
 plt.plot(np.sort(R2),np.sort(M))
 
 
-# In[20]:
 
 
 import matplotlib.pyplot as plt
@@ -227,39 +191,16 @@ L = ((const.h)*(const.c)*(o['po']**2))/(2*(I)*(np.pi)**2)
 L
 
 
-# In[21]:
-
-
-const.h
-
-
-# In[22]:
-
-
-const.c
-
-
-# In[23]:
-
-
 lum = (R**(2))*((4*np.pi**2)*(2898*10**(-6))**(4))
 lum
-
-
-# In[24]:
 
 
 density = M/(R2**3)
 density
 
 
-# In[25]:
-
 
 plt.scatter(np.log(lum),o['D in Kpc'])
-
-
-# In[26]:
 
 
 ang_mom = l['I']*((2*np.pi)/o['po'])
@@ -270,21 +211,13 @@ ang_mom
 
 # ### $M = \frac{5PL_{ang}}{4\pi R^{2}}$
 
-# In[27]:
-
 
 M_ = (5*o['po']*ang_mom)/(4*(np.pi)*(R**2))
 M_
 
 
-# In[30]:
-
-
 lu = (l['I']*o['pdot'])/(o['po'])**3
 lu
-
-
-# In[40]:
 
 
 # Simple Scatterplot with colored points
@@ -297,34 +230,3 @@ plt.title('Simple Scatter plot')
 plt.xlabel('X - value')
 plt.ylabel('Y - value')
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
